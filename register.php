@@ -14,14 +14,6 @@
 
         <table id="table-logi">
             <tr>
-              <td>Eesnimi</td>
-              <td><input type="text" name="eesnimi"></td>
-            </tr>
-            <tr>
-              <td>Perekonnanimi</td>
-              <td><input type="text" name="perenimi"></td>
-            </tr>
-            <tr>
               <td>Kasutajanimi</td>
               <td><input type="text" name="kasutajanimi_reg"></td>
             </tr>

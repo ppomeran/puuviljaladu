@@ -33,7 +33,7 @@
           <tr>
             <th>Nimetus</th>
             <th>Kogus</th>
-            <th></th>
+            <th>Tegevused</th>
             <th></th>
           </tr>
         </thead>
@@ -45,7 +45,6 @@
               </td>
               <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                 <input type="hidden" name="action" value="muuda">
-                <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
                 <input type="hidden" name="id" value="<?= $rida['Id']; ?>">
                 <td>
                   <input type="number" name="kogus" value="<?= $rida['Kogus']; ?>">
@@ -57,7 +56,6 @@
               <td>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                   <input type="hidden" name="action" value="kustuta">
-                  <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
                   <input type="hidden" name="id" value="<?= $rida['Id']; ?>">
                   <button type="submit">Kustuta</button>
                 </form>

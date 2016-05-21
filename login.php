@@ -28,7 +28,6 @@
           <a href="register.php">Registreeri kasutajaks</a>
         </p>
       </form>
-
     </div>
   </body>
 </html>
