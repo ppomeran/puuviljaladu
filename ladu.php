@@ -22,6 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $kogus = intval($_POST['kogus']);
       $result = controller_muuda_toode($id, $kogus);
       break;
+    case 'registreeri':
+      $kasutajanimi = $_POST['kasutajanimi_reg'];
+      $parool = $_POST['parool_reg'];
+      $result = controller_registreeri($kasutajanimi, $parool);
+      break;
   }
 
 
@@ -34,6 +39,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   exit;
 }
 
-require 'view.php';
+if (!empty($_GET['view'])) {
+  switch ($_GET['view']) {
+    case 'registreeri':
+      require 'register.php';
+      break;
+    default:
+      header:('Content-Type: text/plain; Charset=utf-8');
+      echo 'Tundmatu valik!';
+      exit;
+  }
+} else {
+    require 'view.php';
+}
 
 mysqli_close($l);

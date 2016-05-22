@@ -20,3 +20,10 @@ function controller_muuda_toode($id, $kogus) {
   }
   return model_muuda_toode($id, $kogus);
 }
+
+function controller_registreeri($kasutajanimi, $parool) {
+  if ($kasutajanimi == '' || $parool == '') {
+    return false;
+  }
+  return model_lisa_kasutaja($kasutajanimi, $parool);
+}

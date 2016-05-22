@@ -69,3 +69,21 @@ function model_muuda_toode($id, $kogus) {
   mysqli_stmt_close($stmt);
   return true;
 }
+
+function model_lisa_kasutaja($kasutajanimi, $parool) {
+  global $l;
+  $hash = password_hash($parool, PASSWORD_DEFAULT);
+  $query = 'INSERT INTO kasutajad (Kasutajanimi, Parool)' . 'VALUES (?, ?)';
+  $stmt = mysqli_prepare($l, $query);
+
+  if(mysqli_error($l)) {
+    echo mysqli_error($l);
+    exit;
+  }
+
+  mysqli_stmt_bind_param($stmt, 'ss', $kasutajanimi, $hash);
+  mysqli_stmt_execute($stmt);
+  $id = mysqli_stmt_insert_id($stmt);
+  mysqli_stmt_close($stmt);
+  return $id;
+}
