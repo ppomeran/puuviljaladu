@@ -27,6 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $parool = $_POST['parool_reg'];
       $result = controller_registreeri($kasutajanimi, $parool);
       break;
+    case 'login':
+      $kasutajanimi = $_POST['kasutajanimi_log'];
+      $parool = $_POST['parool_log'];
+      $result = controller_login($kasutajanimi, $parool);
+      break;
   }
 
 
@@ -41,15 +46,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 if (!empty($_GET['view'])) {
   switch ($_GET['view']) {
+
     case 'registreeri':
       require 'register.php';
       break;
+
+    case 'login':
+      require 'login.php';
+      break;
+
     default:
       header:('Content-Type: text/plain; Charset=utf-8');
       echo 'Tundmatu valik!';
       exit;
   }
 } else {
+    if (!controller_kasutaja()) {
+      header ('Location: ' . $_SERVER['PHP_SELF'] . '?view=login');
+      exit;
+    }
+
     require 'view.php';
 }
 
