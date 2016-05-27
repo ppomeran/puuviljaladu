@@ -1,9 +1,32 @@
 body {
-  background-color: #99ccff;
+  background-color: #0faff0;
+  color: #ffffff;
+  font-family: "Arial", sans-serif;
+}
+
+input {
+  border-radius: 5px;
 }
 
 #div-vorm {
-  background-color: yellow;
+  background-color: #f2f2f2;
   display: inline-block;
-  font-family: "Arial", sans-serif;
+  color: #4d4d4d;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+#div-kogu-sisu {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+#div-tootetabel {
+  margin-top: 100px;
+}
+
+.tootekogus {
+  text-align: right;
 }

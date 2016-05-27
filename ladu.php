@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require 'model.php';
 require 'controller.php';
@@ -31,6 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $kasutajanimi = $_POST['kasutajanimi_log'];
       $parool = $_POST['parool_log'];
       $result = controller_login($kasutajanimi, $parool);
+      break;
+    case 'logout':
+      $result = controller_logout();
       break;
   }
 

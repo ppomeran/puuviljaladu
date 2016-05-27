@@ -15,7 +15,7 @@ function controller_kustuta_toode($id) {
 }
 
 function controller_muuda_toode($id, $kogus) {
-  if ($id == '') {
+  if ($id == '' || $kogus < 0) {
     return false;
   }
   return model_muuda_toode($id, $kogus);
@@ -49,4 +49,17 @@ function controller_login($kasutajanimi, $parool) {
   //kui id on käes, paneme session_user väärtuseks ja tagastame id
   $_SESSION['login'] = $id;
   return $id;
+}
+
+function controller_logout()
+{
+    // muuda sessiooni ku?psis kehtetuks
+    if (isset($_COOKIE[session_name()])) {
+        setcookie(session_name(), '', time() - 42000, '/');
+    }
+    // tühjenda sessiooni massiiv
+    $_SESSION = array();
+    // lõpeta sessioon
+    session_destroy();
+    return true;
 }
