@@ -1,24 +1,17 @@
 <?php
 
-define("DB_HOST", "localhost");
-define("DB_USER", "root");
-define("DB_PASSWORD", "");
-define("DB_DATABASE", "puuviljaladu");
+$host = "localhost";
+$user = "test";
+$pass = "t3st3r123";
+$db = "test";
 
-$l = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
-
-//$host = 'localhost';
-//$user = 'ruut';
-//$pass = '';
-//$db = 'puuviljaladu';
-
-//$l = mysqli_connect($host, $user, $pass, $db);
+$l = mysqli_connect($host, $user, $pass, $db);
 
 mysqli_query($l, 'SET CHARACTER SET UTF8');
 
 function model_lisa_toode($nimetus, $kogus){
   global $l;
-  $query = 'INSERT INTO tooted(Nimetus, Kogus) VALUES (?, ?)';
+  $query = 'INSERT INTO ppomeran__tooted(Nimetus, Kogus) VALUES (?, ?)';
   $stmt = mysqli_prepare($l, $query);
   mysqli_stmt_bind_param($stmt, 'si', $nimetus, $kogus);
   mysqli_stmt_execute($stmt);
@@ -30,7 +23,7 @@ function model_lisa_toode($nimetus, $kogus){
 function model_lae_tooted() {
   global $l;
 
-  $query = 'SELECT Id, Nimetus, Kogus FROM tooted ORDER BY Nimetus ASC';
+  $query = 'SELECT Id, Nimetus, Kogus FROM ppomeran__tooted ORDER BY Nimetus ASC';
   $stmt = mysqli_prepare($l, $query);
 
   mysqli_stmt_execute($stmt);
@@ -51,7 +44,7 @@ function model_lae_tooted() {
 
 function model_kustuta_toode($id) {
   global $l;
-  $query = 'DELETE FROM tooted WHERE Id=? LIMIT 1';
+  $query = 'DELETE FROM ppomeran__tooted WHERE Id=? LIMIT 1';
   $stmt = mysqli_prepare($l, $query);
   mysqli_stmt_bind_param($stmt, 'i', $id);
   mysqli_stmt_execute($stmt);
@@ -62,7 +55,7 @@ function model_kustuta_toode($id) {
 
 function model_muuda_toode($id, $kogus) {
   global $l;
-  $query = 'UPDATE tooted SET Kogus=? WHERE Id=? LIMIT 1';
+  $query = 'UPDATE ppomeran__tooted SET Kogus=? WHERE Id=? LIMIT 1';
   $stmt = mysqli_prepare($l, $query);
   mysqli_stmt_bind_param($stmt, 'ii', $kogus, $id);
   mysqli_stmt_execute($stmt);
@@ -73,7 +66,7 @@ function model_muuda_toode($id, $kogus) {
 function model_lisa_kasutaja($kasutajanimi, $parool) {
   global $l;
   $hash = password_hash($parool, PASSWORD_DEFAULT);
-  $query = 'INSERT INTO kasutajad (Kasutajanimi, Parool)' . 'VALUES (?, ?)';
+  $query = 'INSERT INTO ppomeran__kasutajad (Kasutajanimi, Parool)' . 'VALUES (?, ?)';
   $stmt = mysqli_prepare($l, $query);
 
   if(mysqli_error($l)) {
@@ -90,7 +83,7 @@ function model_lisa_kasutaja($kasutajanimi, $parool) {
 
 function model_vota_kasutaja($kasutajanimi, $parool) {
   global $l;
-  $query = 'SELECT Id, Parool FROM kasutajad WHERE Kasutajanimi=? LIMIT 1';
+  $query = 'SELECT Id, Parool FROM ppomeran__kasutajad WHERE Kasutajanimi=? LIMIT 1';
   $stmt = mysqli_prepare($l, $query);
   //kontrollib kas väärtused klapivad sql lauses
   if (mysqli_error($l)) {

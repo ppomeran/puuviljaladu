@@ -5,6 +5,7 @@
     <title>Sisselogimise vorm</title>
     <link rel="stylesheet" href="ladu.css" type="text/css" charset="utf-8">
   </head>
+
   <body>
     <div id="div-kogu-sisu">
       <h1>Logi sisse</h1>
@@ -30,6 +31,6 @@
           </p>
         </form>
       </div>
-    </div-kogu-sisu>
+    </div>
   </body>
 </html>

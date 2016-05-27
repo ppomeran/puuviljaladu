@@ -35,31 +35,24 @@ function controller_kasutaja() {
   return $_SESSION['login'];
 }
 
-//küsime modelist kas kasutaja andmed on 6iged
 function controller_login($kasutajanimi, $parool) {
   if($kasutajanimi == '' || $parool == '') {
     return false;
   }
-  //küsime modelist kasutaja id; proovime kasutaja andmeid laadida
   $id = model_vota_kasutaja($kasutajanimi, $parool);
-  //kui id'd ei leia
   if(!$id){
     return false;
   }
-  //kui id on käes, paneme session_user väärtuseks ja tagastame id
   $_SESSION['login'] = $id;
   return $id;
 }
 
 function controller_logout()
 {
-    // muuda sessiooni ku?psis kehtetuks
     if (isset($_COOKIE[session_name()])) {
         setcookie(session_name(), '', time() - 42000, '/');
     }
-    // tühjenda sessiooni massiiv
     $_SESSION = array();
-    // lõpeta sessioon
     session_destroy();
     return true;
 }

@@ -5,14 +5,13 @@
     <title>Registreerimise vorm</title>
     <link rel="stylesheet" href="ladu.css" type="text/css" charset="utf-8">
   </head>
+
   <body>
     <div id="div-kogu-sisu">
       <h1>Registreeri kasutajaks</h1>
       <div id="div-registreeri">
         <form  method="post" action="<?= $_SERVER['PHP_SELF']; ?>">
-
           <input type="hidden" name="action" value="registreeri">
-
           <table id="table-logi">
               <tr>
                 <td>Kasutajanimi</td>
@@ -30,7 +29,6 @@
           </p>
         </form>
       </div>
-    </div-kogu-sisu>
-
+    </div>
   </body>
 </html>

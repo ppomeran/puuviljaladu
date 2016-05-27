@@ -38,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       break;
   }
 
-
   if ($result) {
     header('Location: '.$_SERVER['PHP_SELF']);
   }else {
@@ -49,16 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if (!empty($_GET['view'])) {
-  switch ($_GET['view']) {
 
+  switch ($_GET['view']) {
     case 'registreeri':
       require 'register.php';
       break;
-
     case 'login':
       require 'login.php';
       break;
-
     default:
       header:('Content-Type: text/plain; Charset=utf-8');
       echo 'Tundmatu valik!';

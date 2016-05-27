@@ -19,8 +19,9 @@ input {
 }
 
 #div-kogu-sisu {
-  margin-left: 15%;
-  margin-right: 15%;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #div-tootetabel {
@@ -29,4 +30,14 @@ input {
 
 .tootekogus {
   text-align: right;
+}
+
+#tiitel-pilt {
+  width: 100%;
+}
+
+#image-container {
+  width: auto;
+  height: 150px;
+  overflow: hidden;
 }
